@@ -1,0 +1,13 @@
+{
+  "shared_folders" :
+  [
+    {
+      "secret" : "GENERATE_A_NEW_SECRET", // required field - use --generate-secret in command line to create new secret
+      "dir" : "/data", // * required field
+      "use_relay_server" : true, //  use relay server when direct connection fails
+      "use_tracker" : true,
+      "use_dht" : false,
+      "search_lan" : true
+    }
+  ]
+}

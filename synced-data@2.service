@@ -1,0 +1,15 @@
+[Unit]
+Description=Synced Data Service
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSet=0
+ExecStartPre=/usr/bin/docker pull registry.blackwaterdevops.co.uk/synced_data
+ExecStartPre=-/usr/bin/docker kill synced_data
+ExecStartPre=-/usr/bin/docker rm synced_data
+ExecStart=/usr/bin/docker run -rm --name synced_data /btsync --config /config.json --nodaemon
+ExecStop=/usr/bin/docker stop synced_data
+
+[X-Fleet]
+Conflicts=synced-data@*.service
